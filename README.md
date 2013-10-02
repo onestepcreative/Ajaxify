@@ -1,5 +1,83 @@
 ***
 
+#### Getting Started
+
+The Javascript Core, also known as CrystalCore, is built similar to Foundation 4 Javascript. Our biggest focus was to create a clear and concise way to interact with the core and extensions, while maintaining control and flexibility.
+
+#### Dependencies
+
+To run the CrystalCore Plugin, be sure that **jQuery** is included in the **head** of the page. Unlike Foundation, CrystalCore doesn't support Zepto, so we recommend using only jQuery. **Modernizr** is also required and is used for the html5shiv and feature detection, and should ***always*** be included in the **head** above your stylesheets.
+
+```html
+
+<!-- don't forget Modernizr, it is required -->  
+<script src="/files/assets/scripts/crystal/custom.modernizr.js"></script>
+
+<!-- stylesheets should be loaded here -->
+
+<!-- load up jQuery here, it is required -->  
+<script src="/files/assets/scripts/crystal/custom.jquery.js"></script>
+  
+```
+
+#### Include Libraries & Extensions
+
+CrystalCore was built in such a way that it streamlines the implementation of CrystalCore Extensions by wrapping them up in a single, easy to use plugin under the ***$.fn.crystalcore()*** jQuery namespace. In order to make this happen, a file called *crystal.core.js* serves as the center hub for each extension used in the site. For any and all of the plugin and extensions to work, include crystal.core.js above the **body** tag in the footer. Any extension files should be included after the core.
+
+```html
+
+<!-- load the CrystalCore file, it is required -->  
+<script src="/files/assets/scripts/crystal/crystal.core.js"></script>
+
+<!-- load all extension files to be used in site -->  
+<script src="/files/assets/scripts/crystal/crystal.ajaxify.js"></script>
+<script src="/files/assets/scripts/crystal/crystal.extension_name.js"></script>
+<script src="/files/assets/scripts/crystal/crystal.extension_name.js"></script>
+<!-- ... -->
+
+</body>
+  
+```
+
+#### Initialize CrystalCore
+
+After the CrystalCore Javascript has been included, a simple call can get the core up and running. 
+```html
+    <!-- core and extension files -->
+
+    <script>
+        $(document).crystalcore()
+    </script>
+
+</body>
+```
+
+Initializing the core will kick things off. Then, there's a great way to initialize and customize the extensions you want to use:
+
+```javascript
+// In it's simplest form, here's how crystalcore works
+$(document).crystalcore('your_extension', { /* your_extension_settings */ });
+
+// In this example, the Ajaxify Extension is being initialized
+// Where http://the-ajax-url.com will be used to run the ajax call 
+// And our klass setting '.ajaxify' is used to append ajaxed data
+$(document).crystalcore('ajaxify', { url: 'http://the-url.com', klass: '.ajaxify' });
+```
+
+This should give you a pretty good start as to what to expect.   
+For more in depth documentation each extensions has it's own wiki page.
+
+
+
+
+
+
+
+
+
+
+***
+
 #### The Purpose
 
 Ajaxify is an extension that makes it very simple to make new Ajax requests, grab the needed data, and append it to the page. With Ajaxify, you can make multiple requests to different sites, and append data to your site in a matter of seconds.
