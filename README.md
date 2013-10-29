@@ -1,13 +1,10 @@
-
 #### Initialize Ajaxify
 
-To get Ajaxify initialized, we can use the pattern we learned in "Javascript Core" that looked like this:
-
 ```javascript
-$(document).crystalcore('your_extension', { /* your_extension_settings */ });
+$(document).vizcore('your_extension', { /* your_extension_settings */ });
 ```
 
-Because we are going to be sending off an ajax request, grabbing some elements from that request, and appending those elements to the page, there are two required bits of info we need.
+Because we are going to be sending off an ajax request, grabbing some html elements from that request, and appending those elements to the page, there are two required bits of info we need.
 
 **Ajaxify has two settings that *must* be set to move forward: 'url' & 'klass'**
 
@@ -17,7 +14,7 @@ Because we are going to be sending off an ajax request, grabbing some elements f
 Now that we have the two required settings figured out, lets initialize Ajaxify
 
 ```javascript
-$(document).crystalcore('ajaxify', {
+$(document).vizcore('ajaxify', {
     url   : 'http://example.com',
     klass : '.ajaxify'
 });
@@ -58,15 +55,15 @@ When we put it all together, it looks something like this:
     
     
     <!-- load the CrystalCore file, it is required -->  
-    <script src="/files/assets/scripts/crystal/crystal.core.js"></script>
+    <script src="assets/scripts/viz.core.js"></script>
     
     <!-- load all extension files to be used in site -->  
-    <script src="/files/assets/scripts/crystal/crystal.ajaxify.js"></script>
+    <script src="assets/scripts/viz.ajaxify.js"></script>
     
     <script>
 
         // Initialize Ajaxify and config the settings
-        $(document).crystalcore('ajaxify' {
+        $(document).vizcore('ajaxify' {
             url   : 'http://example.com/',
             klass : '.ajaxify',
         });
@@ -81,7 +78,7 @@ When we put it all together, it looks something like this:
 Aside from settings we covered, Ajaxify comes with a variety of different settings that you can set to customize your install. Listed below are the options available to you. If you have ideas for additional configuration options, be sure to [track an issue](https://github.com/crystalcommerce/FrontendPlugins/issues) to the Plugins Repo!
 
 ```javascript
-$(document).crystalcore('ajaxify', {
+$(document).vizcore('ajaxify', {
     url		: null,		// 'string' - The site to send the Ajax Request to
     type	: 'GET',	// 'string' - Type of request you'd like to make
     dataType	: 'html',	// 'string' - DataType that will be returned from ajax
