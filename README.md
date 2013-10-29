@@ -54,7 +54,7 @@ When we put it all together, it looks something like this:
     <!-- the rest of your html page an such --> 
     
     
-    <!-- load the CrystalCore file, it is required -->  
+    <!-- load the VizCore file, it is required -->  
     <script src="assets/scripts/viz.core.js"></script>
     
     <!-- load all extension files to be used in site -->  
