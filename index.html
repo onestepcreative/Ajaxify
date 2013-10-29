@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+	<meta charset="utf-8" />
+	
+	<title>Ajaxify Plugin Demo</title>
+	
+	<script src="assets/scripts/libs/modernizr.js"></script>
+	
+	<link rel="stylesheet" href="assets/css/reset.css" type="text/css" />
+	<link rel="stylesheet" href="assets/css/global.css" type="text/css" />
+	
+	<script src="assets/scripts/libs/jquery.js"></script>
+		
+	<script src="assets/scripts/viz.core.js"></script>
+	<script src="assets/scripts/viz.ajaxify.js"></script>
+	
+	<script>
+		
+		$(document).vizcore('ajaxify', {
+			url		: null,			// 'string' - The site to send the Ajax Request to
+			type	: 'GET',		// 'string' - Type of request you'd like to make
+			dataType: 'html',		// 'string' - DataType that will be returned from ajax
+			klass	: '.ajaxify',	// 'string' - The Class we'll append new ajax elements to
+			cached	: [],			// boolean - A way to cache the response, so you can access it later
+			unique	: null,			// 'string' - A unique ID that is set to identify cache
+			animate	: null,			// boolean - Animate the content as it's appended to page
+			loader	: null,			// 'string' - Set your image path for the ajax loader here
+			hrefs       : null      // 'string' - Change behavior of links that don't have a target set
+		});
+		
+		// Ajax 03
+		$(document).vizcore('ajaxify', {
+			url		: 'http://blog.onestepcreative.com',
+			klass	: '.ajaxify_5',
+		});
+		
+	</script>
+
+</head>
+<body>
+
+	<div class="ajaxify_1" data-ajaxify=".main-navbar"></div>
+	<div class="ajaxify_1" data-ajaxify="#sidebar"></div>
+	
+	<div class="ajaxify_3" data-ajaxify="#featured-products"></div>
+	<div class="ajaxify_3" data-ajaxify="#main-nav"></div>
+	
+	<div class="ajaxify_5" data-ajaxify="#logo-container"></div>
+	<div class="ajaxify_5" data-ajaxify="#global-nav"></div>
+
+</body>
+</html>
