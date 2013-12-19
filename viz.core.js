@@ -479,7 +479,7 @@
 })(jQuery, this, this.document);
 	
 // Include this script to do cross-domain requests with Yahoo's YQL hack
-document.write("<script src=\"assets/scripts/crystal/viz.xdom.js\"></script>");
+//document.write("<script src=\"assets/scripts/crystal/viz.xdom.js\"></script>");
 	
 
 
