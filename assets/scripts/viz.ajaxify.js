@@ -68,6 +68,7 @@
 			// the elements to handle
 			elem		: '.ajaxify',
 			replace 	: false,
+			loader		: null,
 			
 			// callbacks to handle data	
 			before		: null,
@@ -82,8 +83,7 @@
 			// animation options
 			effect		: 'flash',
 			speed		: 500,
-			loader		: '',
-			
+
 			// data cleaning optoons
 			clean 		: {
 				
