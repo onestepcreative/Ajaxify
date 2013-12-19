@@ -1,26 +1,183 @@
-#### Initialize Ajaxify
+## Requirements  
+  
+```html
+<script src="assets/scripts/libs/jquery.js"></script>
+<script src="assets/scripts/viz.core.js"></script>
+<script src="assets/scripts/viz.ajaxify.js"></script>  
 
-```javascript
-$(document).vizcore('your_extension', { /* your_extension_settings */ });
+<!-- (optional) for doing cross-domain requests -->
+<script src="assets/scripts/libs/xdom.js"></script>
 ```
 
-Because we are going to be sending off an ajax request, grabbing some html elements from that request, and appending those elements to the page, there are two required bits of info we need.
+## Initialize Ajaxify
 
-**Ajaxify has two settings that *must* be set to move forward: 'url' & 'klass'**
-
-**url   :** an absolute url we'll send the ajax request to - "http://example.com"  
-**klass :** the class the ajax data will be append to      - ".ajaxify"  
-
-Now that we have the two required settings figured out, lets initialize Ajaxify
+The **vizcore namespace** is a plugin utility that is used to initialize plugins; where the first parameter is the name of the plugin, and the second parameter is either a string or a plain object. Other plugins can be added to the vizcore namespace by tapping into the Visualyze.libs object.  
+  
+For the simplest implementation, pass a url as the second paremeter:
+```javascript
+// Use an absolute url to define where to send the ajax request
+$(document).vizcore('ajaxify', 'http://sendrequesttome.com');
+```
+  
+## Ajaxify Options
+For a more complex implementation, pass a settings object as the second parameter.  
 
 ```javascript
 $(document).vizcore('ajaxify', {
-    url   : 'http://example.com',
-    klass : '.ajaxify'
+    
+    // Ajax specific options
+    url         : 'http://example.com',
+    data        : yourData,
+    type        : 'GET',
+    dataType    : 'html',
+    
+    // Ajax callback methods
+    before      : function(){},
+    success     : function(){},
+    failure     : function(){},
+    
+    // DOM element handling
+    elem        : '.ajaxify',
+    replace     : false,
+    
+    // Animation options
+    effect      : 'fade',
+    speed       : 1000,
+    loader      : '<div class="loading"></div>',
+    
+    // Caching / localStorage
+    cached      : true,
+    key         : 'ajaxify',
+    duration    : 5,
+    
+    // Data cleaning options
+    clean       : {
+        
+        links   : false,
+        images  : true,
+        
+    }
 });
 ```
 
-#### Build Markup for Ajaxify
+***
+#### Ajax Specific Options
+***
+
+#### url 
+  + the url to send the ajax request to
+  + **type:**  `string`
+  + **default:** null  
+
+#### data 
+  + data parameters sent with ajax request
+  + **type:**  `mixed`
+  + **default:** null
+
+#### type 
+  + the type of request to make
+  + **type:**  `string`
+  + **default:** GET
+
+#### dataType 
+  + the type of data you'll be requesting
+  + **type:**  `string`
+  + **default:** html
+
+***
+#### Ajax Callback Options
+***
+
+#### before
+  + called in the beforeSend ajax method
+  + **type:**  `function`
+  + **default:** null
+
+#### success
+  + called in the defferred.done() method on success
+  + **type:**  `function`
+  + **default:** null
+
+#### failure
+  + called in the defferred.fail() method on failure
+  + **type:**  `function`
+  + **default:** null
+
+***
+#### DOM Elements Options
+***
+
+#### elem
+  + the DOM element to append response html to
+  + **type:**  `string`
+  + **default:** .ajaxify
+
+#### replace
+  + replace all content in 'elem' instead of append to 'elem'
+  + **type:**  `boolean`
+  + **default:** false
+
+***
+#### Response Animation Options
+***
+
+#### effect
+  + the type of effect to use when injecting to the page
+  + **type:**  `string`
+  + **default:** flash
+  + **options:** 'fade' or 'flash'
+
+#### replace
+  + the speed at which to animate when effect is set to 'fade'
+  + **type:**  `number`
+  + **default:** 500
+
+#### loader
+  + include a loading html element while waiting for response
+  + **type:**  `string`
+  + **default:** null
+
+***
+#### Response Caching Options
+***
+
+#### cached
+  + whether or not to cache the ajax response
+  + **type:**  `boolean`
+  + **default:** true
+
+#### key
+  + the key to identify data in localStorage
+  + **type:**  `string`
+  + **default:** settings.url
+
+#### duration
+  + how long (in hours) to store the cache
+  + **type:**  `number`
+  + **default:** 5
+
+***
+#### Response Cleaning Options
+***
+
+#### clean.links
+  + create absolute links based on settings.url
+  + **type:**  `boolean`
+  + **default:** true
+
+#### clean.images
+  + create absolute image src based on settings.url
+  + **type:**  `boolean`
+  + **default:** true  
+  
+
+
+
+
+
+
+
+## Build Markup for Ajaxify
 
 Getting the ajaxed data into your page is easier than ever by using the predefined markup structure. Say for example we need to strip out three IDs from the ajax response: #main, #nav, #tree - all we have to do now is create three html elements in our page so we have a place to append our ajaxed elements.
 
@@ -79,7 +236,7 @@ Aside from settings we covered, Ajaxify comes with a variety of different settin
 
 ```javascript
 $(document).vizcore('ajaxify', {
-    url		: null,		// 'string' - The site to send the Ajax Request to
+    url    	: null,		// 'string' - The site to send the Ajax Request to
     type	: 'GET',	// 'string' - Type of request you'd like to make
     dataType	: 'html',	// 'string' - DataType that will be returned from ajax
     klass	: '.ajaxify',	// 'string' - The Class we'll append new ajax elements to
