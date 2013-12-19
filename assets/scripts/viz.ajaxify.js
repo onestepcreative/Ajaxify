@@ -9,12 +9,6 @@
 	This plugin allows you to make an Ajax
 	request to get 'html' and parse it to the
 	page with simple data attributes. 
-	
-	// TODO: setup beforeSend option
-	// TODO: setup success & failure callback options
-	// TODO: make sure you can abort requests
-	// TODO: add local storage to this copy
-
 
 */
 
