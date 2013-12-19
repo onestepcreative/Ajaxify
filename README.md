@@ -77,11 +77,11 @@ $(document).vizcore('ajaxify', {
     // DOM element handling
     elem        : '.ajaxify',
     replace     : false,
+    loader      : '<div class="loading"></div>',
     
     // Animation options
     effect      : 'fade',
     speed       : 1000,
-    loader      : '<div class="loading"></div>',
     
     // Caching / localStorage
     cached      : true,
@@ -155,6 +155,11 @@ $(document).vizcore('ajaxify', {
   + **type:**  `boolean`
   + **default:** false
 
+#### loader
+  + a DOM node to use to indicate loading while waiting for ajax response
+  + **type:**  `string`
+  + **default:** null
+
 ***
 #### Response Animation Options
 ***
@@ -169,11 +174,6 @@ $(document).vizcore('ajaxify', {
   + the speed at which to animate when effect is set to 'fade'
   + **type:**  `number`
   + **default:** 500
-
-#### loader
-  + include a loading html element while waiting for response
-  + **type:**  `string`
-  + **default:** null
 
 ***
 #### Response Caching Options
